@@ -8,6 +8,7 @@ class Currency(models.Model):
         blank=False,
         max_length=10,
         null=False,
+        unique=True,
     )
 
     # comments
