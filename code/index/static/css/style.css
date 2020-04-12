@@ -1,0 +1,16 @@
+html {
+    height: 100%;
+}
+
+body {
+    color: white;
+    background-color: black;
+    height: 100%;
+}
+
+.content {
+    width: 1200px;
+    height: calc(100% - 56px);
+    margin: 0 auto;
+    background-color: red;
+}

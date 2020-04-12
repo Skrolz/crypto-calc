@@ -25,7 +25,7 @@ class Currency(models.Model):
     )
 
     class Meta:
-        verbose_name_plural = "Currencies"
+        verbose_name_plural = "currencies"
 
     def __str__(self):
         return self.abbreviation

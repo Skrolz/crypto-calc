@@ -1,9 +1,0 @@
-{% extends 'currency/currency.html' %}
-
-{% block content %}
-<ul>
-    {% for currency in currencies %}
-    <li>{{ currency.abbreviation }} - {{ currency.name }}</li>
-    {% endfor %}
-</ul>
-{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Heading -->
+    <h2>{{ title }}</h2>
+
+    <!-- Currencies Table -->
+    <div id="currencies-grid" style="height: calc(100% - 46px); width:100%;" class="ag-theme-alpine-dark"></div>
+
+    <!-- Grid Script -->
+    <script src="{% static 'js/currency.js' %}"></script>
+    <script>createGrid({{currencies|safe}})</script>
+
+{% endblock %}
