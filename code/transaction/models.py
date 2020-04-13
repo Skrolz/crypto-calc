@@ -9,13 +9,13 @@ class Transaction(models.Model):
     SELL = '2sell'
     TRADE = '3trade'
     TRANSFER = '4transfer'
-    EARNED = '5earn'
+    EARN = '5earn'
     CATEGORY_CHOICES = (
         (BUY, 'Buy'),
         (SELL, 'Sell'),
         (TRADE, 'Trade'),
         (TRANSFER, 'Transfer'),
-        (EARNED, 'Earn'),
+        (EARN, 'Earn'),
     )
     category = models.CharField(
         blank=False,
@@ -32,10 +32,12 @@ class Transaction(models.Model):
     )
 
     # currency IN quantity
-    currency_in_quantity = models.IntegerField(
-        blank=False,
+    currency_in_quantity = models.DecimalField(
+        blank=True,
+        decimal_places=20,
         default=0,
-        null=False,
+        max_digits=40,
+        null=True,
         verbose_name='Quantity'
     )
 
@@ -43,18 +45,20 @@ class Transaction(models.Model):
     currency_in_type = models.ForeignKey(
         'currency.Currency',
         models.PROTECT,
-        blank=False,
+        blank=True,
         default=None,
-        null=False,
+        null=True,
         related_name='currency_in_type',
         verbose_name='Currency'
     )
 
     # currency OUT quantity
-    currency_out_quantity = models.IntegerField(
-        blank=False,
+    currency_out_quantity = models.DecimalField(
+        blank=True,
+        decimal_places=20,
         default=0,
-        null=False,
+        max_digits=40,
+        null=True,
         verbose_name='Quantity'
     )
 
@@ -62,17 +66,19 @@ class Transaction(models.Model):
     currency_out_type = models.ForeignKey(
         'currency.Currency',
         models.PROTECT,
-        blank=False,
+        blank=True,
         default=None,
-        null=False,
+        null=True,
         related_name='currency_out_type',
         verbose_name='Currency'
     )
 
     # fee quantity
-    fee_quantity = models.IntegerField(
+    fee_quantity = models.DecimalField(
         blank=True,
+        decimal_places=20,
         default=0,
+        max_digits=40,
         null=True,
         verbose_name='Quantity'
     )
@@ -96,4 +102,4 @@ class Transaction(models.Model):
 
 
     def __str__(self):
-        return self.timestamp
+        return str(self.timestamp)

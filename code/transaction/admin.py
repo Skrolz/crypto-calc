@@ -7,11 +7,11 @@ class TransactionAdmin(admin.ModelAdmin):
             'category',
             'timestamp',
         ]}),
-        ('IN', {'fields':[
+        ('INCOMING', {'fields':[
             'currency_in_type',
             'currency_in_quantity',
         ]}),
-        ('OUT', {'fields':[
+        ('OUTGOING', {'fields':[
             'currency_out_type',
             'currency_out_quantity',
         ]}),

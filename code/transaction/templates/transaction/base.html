@@ -4,6 +4,13 @@
 {% block content %}
 
     <!-- Heading -->
-    <h2>{{ title }}</h2>
+    <h1>{{ title }}</h1>
+
+    <!-- Transactions Table -->
+    <div id="transactions-grid" style="height: calc(100% - 56px); width:100%;" class="ag-theme-alpine-dark"></div>
+
+    <!-- Grid Script -->
+    <script src="{% static 'js/transaction.js' %}"></script>
+    <script>createGrid({{transactions|safe}})</script>
 
 {% endblock %}
