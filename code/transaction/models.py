@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from currency.models import Currency
 
 
 class Transaction(models.Model):
@@ -43,7 +44,7 @@ class Transaction(models.Model):
 
     # currency IN type
     currency_in_type = models.ForeignKey(
-        'currency.Currency',
+        Currency,
         models.PROTECT,
         blank=True,
         default=None,
@@ -64,7 +65,7 @@ class Transaction(models.Model):
 
     # currency OUT type
     currency_out_type = models.ForeignKey(
-        'currency.Currency',
+        Currency,
         models.PROTECT,
         blank=True,
         default=None,
@@ -85,7 +86,7 @@ class Transaction(models.Model):
 
     # fee type
     fee_type = models.ForeignKey(
-        'currency.Currency',
+        Currency,
         models.PROTECT,
         blank=True,
         default=None,
@@ -99,7 +100,6 @@ class Transaction(models.Model):
         default=None,
         null=False,
     )
-
 
     def __str__(self):
         return str(self.timestamp)

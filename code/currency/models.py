@@ -1,5 +1,8 @@
 from django.db import models
 
+class CurrencyManager(models.Manager):
+    def get_by_natural_key(self, abbreviation):
+        return self.get(abbreviation=abbreviation)
 
 class Currency(models.Model):
 
@@ -23,6 +26,11 @@ class Currency(models.Model):
         max_length=100,
         null=False,
     )
+
+    objects = CurrencyManager()
+
+    def natural_key(self):
+        return [self.abbreviation]
 
     class Meta:
         verbose_name_plural = "currencies"

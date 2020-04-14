@@ -1,8 +1,11 @@
 function createGrid(gridData) {
+    console.log(gridData)
     const columnDefs = [{
             headerName: "Timestamp",
             field: "fields.timestamp",
-            sort: 'asc'
+            sort: 'asc',
+            pinned: 'left'
+
         },
         {
             headerName: "Category",
@@ -16,7 +19,7 @@ function createGrid(gridData) {
             headerName: "Incoming Quantity",
             field: "fields.currency_in_quantity",
             cellRenderer: function (params) {
-                return parseFloat(params.value)
+                if (params.value) return parseFloat(params.value)
             }
         },
         {
@@ -27,7 +30,7 @@ function createGrid(gridData) {
             headerName: "Outgoing Quantity",
             field: "fields.currency_out_quantity",
             cellRenderer: function (params) {
-                return parseFloat(params.value)
+                if (params.value) return parseFloat(params.value)
             }
         },
         {
@@ -38,13 +41,21 @@ function createGrid(gridData) {
             headerName: "Fee Quantity",
             field: "fields.fee_quantity",
             cellRenderer: function (params) {
-                return parseFloat(params.value)
-            }
+                if (params.value) return parseFloat(params.value)
+            },
+        },
+        {
+            headerName: "Comments",
+            field: "fields.comments",
+            width: 800
         },
     ];
     const rowData = gridData;
     let gridOptions = {
         columnDefs: columnDefs,
+        defaultColDef: {
+            sortable: true,
+        },
         rowData: rowData,
     };
     document.addEventListener('DOMContentLoaded', function () {
