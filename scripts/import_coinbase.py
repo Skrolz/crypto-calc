@@ -3,6 +3,10 @@ from decimal import Decimal
 from currency.models import Currency
 from transaction.models import Transaction
 
+def clear_cryptocalc():
+    Transaction.objects.all().delete()
+    print("Crypto-Calc Transactions CLEARED!")
+
 def import_csv():
 
     with open('coinbase.csv') as csv_file:

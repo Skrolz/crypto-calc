@@ -1,6 +1,10 @@
 import csv
 from transaction.models import Transaction
 
+def clear_cryptocalc():
+    Transaction.objects.all().delete()
+    print("Crypto-Calc Transactions CLEARED!")
+
 def import_csv():
 
     with open('binance.csv') as csv_file:
